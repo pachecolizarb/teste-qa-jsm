@@ -7,7 +7,7 @@ O teste de API foi criado no POSTMAN e exportado o arquivo `api.json` para ser u
 
 * Rodar o comando `npm install`
 
-*Após o comando será instalada as dependências do Cypress e configurando o Cucumber
+*Após o comando será instalada as dependências do Cypress e configurando o Cucumber e newman*
 
 Na automação é possível rodar os testes de duas maneiras via front end, que sera visual para o usuário e backend que é o utilizado em pipelines de automação, como temos como exeplo o Jenkins, fazendo com que o teste rode por baixo dos panos.
 
