@@ -1,0 +1,111 @@
+{
+	"info": {
+		"_postman_id": "e466c961-8ecd-496a-8729-0d44649c3413",
+		"name": "JSM - QA",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "17710838"
+	},
+	"item": [
+		{
+			"name": "StackExchange",
+			"item": [
+				{
+					"name": "Deve retonar lista de users",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Respone time < 1s\", () => {\r",
+									" pm.expect(pm.response.responseTime).to.be.below(1000);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"deve retornar status code 200\", () => {\r",
+									" pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Deve retornar a propriedade items\", () => {\r",
+									" const resposta = pm.response.json();\r",
+									" pm.expect(resposta).to.have.property(\"items\")\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Deve retornar a propriedade badge_counts\", () => {\r",
+									" const resposta = pm.response.json();\r",
+									" pm.expect(resposta.items[0]).to.have.property(\"badge_counts\")\r",
+									"    pm.expect(resposta.items[0].badge_counts).to.have.property(\"bronze\")\r",
+									"    pm.expect(resposta.items[0].badge_counts).to.have.property(\"silver\")\r",
+									"    pm.expect(resposta.items[0].badge_counts).to.have.property(\"gold\")\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Deve retornar a propriedade collectives\", () => {\r",
+									" const resposta = pm.response.json();\r",
+									" pm.expect(resposta.items[0]).to.have.property(\"collectives\")\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Deve retornar a propriedade user_id is not null\", () => {\r",
+									" const resposta = pm.response.json();\r",
+									"  pm.expect(resposta.items[0]).to.have.property(\"user_id\")\r",
+									"    pm.expect(resposta.items[0].user_id).to.is.not.null\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Deve retornar a propriedade reputation e não nulo\", () => {\r",
+									" const resposta = pm.response.json();\r",
+									"  pm.expect(resposta.items[0]).to.have.property(\"reputation\")\r",
+									"    pm.expect(resposta.items[0].reputation).to.is.not.null\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Deve retornar a propriedade creation_date\", () => {\r",
+									" const resposta = pm.response.json();\r",
+									"  pm.expect(resposta.items[0]).to.have.property(\"creation_date\")\r",
+									"    pm.expect(resposta.items[0].creation_date).to.is.not.null\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Deve retornar a propriedade display_name\", () => {\r",
+									" const resposta = pm.response.json();\r",
+									"  pm.expect(resposta.items[0]).to.have.property(\"display_name\")\r",
+									"    pm.expect(resposta.items[0].display_name).to.is.not.null\r",
+									"});\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://api.stackexchange.com/2.3/users?order=desc&sort=reputation&site=stackoverflow",
+							"protocol": "https",
+							"host": [
+								"api",
+								"stackexchange",
+								"com"
+							],
+							"path": [
+								"2.3",
+								"users"
+							],
+							"query": [
+								{
+									"key": "order",
+									"value": "desc"
+								},
+								{
+									"key": "sort",
+									"value": "reputation"
+								},
+								{
+									"key": "site",
+									"value": "stackoverflow"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
